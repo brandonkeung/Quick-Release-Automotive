@@ -12,21 +12,26 @@ As data science majors, we are passionate about leveraging data to solve real-wo
 
 ## Exploration and Preprocessing
 
-TODO: 
 INCLUDE SOME GRAPHS AND TABLES
-Some things we found interesting were... WINDOWS ENCODING!!
+Throughout our exploration, we ran into an issue with downloading and working with the file from a Windows machine. For lines that had no value for Variant, a special character was detected resulting in runtime errors in our Python scripts and SQL queries. Through further investigation, we found that MacOS did not have this issue. To overcome this, on a Windows Machine we used: 
+
+```
+quick_release = pd.read_csv("/work/QRV Bill of Materials.csv", encoding='windows-1252')
+```
+
+We also noticed many parts were duplicated under the same parent. In short, entire entries were copy and pasted. We determined that these entries were intentional and multiple of the same parts were needed to construct the parent object.
 
 - For each given procurement code rule:
    - Find all distinct parents that follow the correct procurement code and sub-component code
    - Find all distinct children that follow the allowed procurement code and sub-component code
    - From the previous list of children, find the number of children that have a parent that follows the parent procurement code and sub-component code.
-- From each given procurement code rule, we can add all the number of children that have parents that follow the rules to find the total number of entries that follow the procurement code rules. This results in a  __% error rate.
+- From each given procurement code rule, we can add all the number of children that have parents that follow the rules to find the total number of entries that follow the procurement code rules. This results in a 15.47% error rate.
 
-We have confirmed this percentage through our tree structure as well. By constructing a tree data structure level by level, we were able to add nodes based on whether they can become children of current nodes. We also ruled out nodes or entries that are unable to be added because of the procurement codes. We continued this method until we reached the 12th level (max level) affirming our previous result of a __% error rate.
+We have a similar percentage through our tree structure as well. By constructing a tree data structure level by level, we were able to add nodes based on whether they can become children of current nodes. We also ruled out nodes or entries that are unable to be added because of the procurement codes. We continued this method until we reached the 12th level (max level) achieving a 23% error rate. ~ 53K nodes correct
 
 ## Analysis
 
-ML Model
+In order to find out more about our data, we used a RandomForestClassifcation model to accurately predict whether an entry was valid. Our model had an accuracy score of 95.32%. However, more importantly, we ran feature importance on our model and determined that Procurement Code Make was the most impactful feature by far. When evaluating what part of the QRV vehicle is impacted the most, we determine the battery pack is also very influential compared to its counterparts. With a negative correlation between System_Battery Pack and IS VALID, we determine that when an entry is related to the Battery Pack, it is more likely to be invalid. In addition, we observed a negative correlation between Joey Tribbiani and IS VALID, determining that the manager may need to help Joey with entering parts into the BoM.
 
 ## Challenges
 
