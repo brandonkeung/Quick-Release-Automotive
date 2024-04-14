@@ -12,7 +12,10 @@ As data science majors, we are passionate about leveraging data to solve real-wo
 
 ## Exploration and Preprocessing
 
-INCLUDE SOME GRAPHS AND TABLES
+![download](https://github.com/brandonkeung/Quick-Release-Automotive/assets/97375525/4a61e89c-069f-4b74-b84a-45f7eb92fe51)
+![download](https://github.com/brandonkeung/Quick-Release-Automotive/assets/97375525/8e3d037d-86e2-4967-96ae-4737d3f6038b)
+![download](https://github.com/brandonkeung/Quick-Release-Automotive/assets/97375525/a269927e-d4df-4dca-b28f-12efb810961d)
+
 Throughout our exploration, we ran into an issue with downloading and working with the file from a Windows machine. For lines that had no value for Variant, a special character was detected resulting in runtime errors in our Python scripts and SQL queries. Through further investigation, we found that MacOS did not have this issue. To overcome this, on a Windows Machine we used: 
 
 ```
@@ -30,6 +33,7 @@ We also noticed many parts were duplicated under the same parent. In short, enti
 We have a similar percentage through our tree structure as well. By constructing a tree data structure level by level, we were able to add nodes based on whether they can become children of current nodes. We also ruled out nodes or entries that are unable to be added because of the procurement codes. We continued this method until we reached the 12th level (max level) achieving a 23% error rate. ~ 53K nodes correct
 
 ## Analysis
+![download](https://github.com/brandonkeung/Quick-Release-Automotive/assets/97375525/a474f8a3-cb3a-408b-914b-ae3a5acf7ccd)
 
 In order to find out more about our data, we used a RandomForestClassifcation model to accurately predict whether an entry was valid. Our model had an accuracy score of 95.32%. However, more importantly, we ran feature importance on our model and determined that Procurement Code Make was the most impactful feature by far. When evaluating what part of the QRV vehicle is impacted the most, we determine the battery pack is also very influential compared to its counterparts. With a negative correlation between System_Battery Pack and IS VALID, we determine that when an entry is related to the Battery Pack, it is more likely to be invalid. In addition, we observed a negative correlation between Joey Tribbiani and IS VALID, determining that the manager may need to help Joey with entering parts into the BoM.
 
