@@ -52,6 +52,9 @@ When constructing our tree data structure, we created many Python scripts and fu
 
 To avoid issues in the Bill of Materials, we can Utilize and enforce Database constraints to guarantee that logic errors are avoided. For example, because all parts custom-designed by a company and standard components must have a procurement code, we can enforce that employees editing the Bill of Materials must include a Procurement Code and can not remove Procurement Codes without removing the whole entry. 
 
+## Presentation Link
+
+https://docs.google.com/presentation/d/1v4ajSZKf744TydMKUte8ym89RiBuycS5vscev4w244U/edit#slide=id.g26e8117f05a_0_5
 
 ## Special Thanks
 
