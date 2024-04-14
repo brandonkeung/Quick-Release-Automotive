@@ -24,6 +24,8 @@ quick_release = pd.read_csv("/work/QRV Bill of Materials.csv", encoding='windows
 
 We also noticed many parts were duplicated under the same parent. In short, entire entries were copy and pasted. We determined that these entries were intentional and multiple of the same parts were needed to construct the parent object.
 
+We also noticed Micky Hua had missing inputs for the procurement codes. There were also invalid inputs into the sub component code such as "ServiceBuy" and "Subcontract".
+
 - For each given procurement code rule:
    - Find all distinct parents that follow the correct procurement code and sub-component code
    - Find all distinct children that follow the allowed procurement code and sub-component code
